@@ -18,6 +18,7 @@ yarn-error.log
 .idea
 yarn.lock
 package-lock.json
+*-lock.yaml
 *bak
 .vscode
 
