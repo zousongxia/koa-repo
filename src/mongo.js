@@ -7,12 +7,20 @@ const tryConnect = () => {
 };
 
 const Model = (name, schema) => {
-  return mongoose.model(
-    name,
-    new mongoose.Schema(schema, {
-      collection: name,
-    })
-  );
+  const Schema = new mongoose.Schema(schema, {
+    collection: name,
+  });
+
+  // 在保存之前设置 updateTime
+  Schema.pre("save", function (next) {
+    if (this.isModified()) {
+      // 如果文档被修改
+      this.updateTime = new Date(); // 更新 updateTime
+    }
+    next();
+  });
+
+  return mongoose.model(name, Schema);
 };
 
 /** 连接成功 */
