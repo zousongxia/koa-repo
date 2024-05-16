@@ -10,7 +10,11 @@ const UserSchema = {
     required: true, // 是否必填
     unique: true, // 是否唯一
   },
-  avatarUrl: String,
+  avatarUrl: {
+    type: String,
+    default:
+      "https://gw.alipayobjects.com/zos/rmsportal/BiazfanxmamNRoxxVxka.png",
+  },
   gender: String,
   phone: String,
   email: String,
