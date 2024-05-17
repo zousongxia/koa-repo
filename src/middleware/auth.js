@@ -26,11 +26,9 @@ module.exports = async (ctx, next) => {
     const token = authorization.split(" ")[1];
     // 验证并解码 JWT
     const currentUser = jwt.verify(token, SECRET_KEY);
-    console.log('currentUser', currentUser);
 
     // 将解码后的信息存储在上下文中以供后续中间件使用
     ctx.state.id = currentUser.id;
-    console.log('ctx.state.id', ctx.state.id);
 
     // 继续执行下一个中间件
     await next();

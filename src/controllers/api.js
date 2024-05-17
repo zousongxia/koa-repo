@@ -5,7 +5,12 @@ const router = new KoaRouter({
 });
 
 const userRouter = require("./api/user");
+const codeRouter = require("./api/code");
 
-router.use(userRouter.routes(), userRouter.allowedMethods());
+router.use(
+  userRouter.routes(),
+  codeRouter.routes(),
+  userRouter.allowedMethods()
+);
 
 module.exports = router;
