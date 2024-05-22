@@ -158,28 +158,4 @@ router.post("/login", async (ctx) => {
   };
 });
 
-router.get("/request", async (ctx) => {
-  function sleep(seconds) {
-    return new Promise((resolve, reject) => {
-      setTimeout(resolve, seconds);
-    });
-  }
-
-  const n = Math.random() * 3000;
-
-  await sleep(n);
-  // const n = Math.random();
-
-  // if (n > 0.8) {
-  //   ctx.body = n;
-  // } else {
-  //   ctx.status = 404;
-  //   ctx.body = "";
-  // }
-  ctx.body = {
-    success: true,
-    data: null,
-  };
-});
-
 module.exports = router;

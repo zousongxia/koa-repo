@@ -19,4 +19,19 @@ router.get("/concurrent", async (ctx) => {
   };
 });
 
+router.get("/timeout-retry", async (ctx) => {
+  function sleep(seconds) {
+    return new Promise((resolve, reject) => {
+      setTimeout(resolve, seconds);
+    });
+  }
+
+  const n = Math.random() * 10000;
+
+  await sleep(n);
+  ctx.body = {
+    success: true,
+  };
+});
+
 module.exports = router;
